@@ -35,11 +35,14 @@
 | `.claude/agents/` | planner / explorer / implementer / verifier / scribe |
 | `.claude/skills/` | /plan, /tasks, /execute, /wrapup |
 | `.claude/settings.json` | 권한(deny/allow) + SessionStart/PreToolUse/Stop hooks |
-| `scripts/session_start.sh` | 새 세션에 current-state와 미완료 plan 주입 |
-| `scripts/bash_guard.py` | 파괴적 명령(rm -rf /, force push 등) 차단 |
-| `scripts/stop_verify.py` | 완료 선언 전 verify.sh 강제 실행 |
+| `scripts/session_start.ts` | 새 세션에 current-state와 미완료 plan 주입 |
+| `scripts/bash_guard.ts` | 파괴적 명령(rm -rf /, force push 등) 차단 |
+| `scripts/stop_verify.ts` | 완료 선언 전 verify.sh 강제 실행 |
 | `scripts/verify.sh` | 프로젝트별 검증 명령 등록 지점 |
 | `docs/templates/` | PLAN / TASKS / REPORT 템플릿 |
+
+Hook 스크립트는 TypeScript(zod로 hook payload 검증)이며 Node.js 23.6+의
+네이티브 TS 실행으로 빌드 없이 동작합니다.
 
 ## 다른 프로젝트에 적용하기
 
@@ -50,6 +53,7 @@ cp -R /path/to/dev-harness/scripts .
 mkdir -p docs && cp -R /path/to/dev-harness/docs/templates docs/
 cp /path/to/dev-harness/docs/current-state.md docs/
 cp /path/to/dev-harness/AGENTS.md /path/to/dev-harness/CLAUDE.md .
+npm install zod   # hook scripts need zod (Node.js >= 23.6)
 ```
 
 그 다음 두 가지만 프로젝트에 맞게 수정:

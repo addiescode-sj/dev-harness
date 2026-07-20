@@ -4,10 +4,14 @@
 set -euo pipefail
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/..}"
 
+# Harness self-check: typecheck the hook scripts (skipped until npm install)
+if [ -d node_modules ]; then
+  npx tsc --noEmit
+fi
+
 # --- Add project checks here, e.g.: ---
 # npm test --silent
-# python3 -m pytest -q
 # npm run lint
 
-echo "verify: OK (no project checks configured yet)"
+echo "verify: OK"
 exit 0

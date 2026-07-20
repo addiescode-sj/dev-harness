@@ -25,7 +25,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/scripts/session_start.sh",
+            "command": "node ${CLAUDE_PROJECT_DIR}/scripts/session_start.ts",
             "timeout": 5
           }
         ]
@@ -37,7 +37,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PROJECT_DIR}/scripts/bash_guard.py",
+            "command": "node ${CLAUDE_PROJECT_DIR}/scripts/bash_guard.ts",
             "timeout": 5
           }
         ]
@@ -48,7 +48,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 ${CLAUDE_PROJECT_DIR}/scripts/stop_verify.py",
+            "command": "node ${CLAUDE_PROJECT_DIR}/scripts/stop_verify.ts",
             "timeout": 300
           }
         ]
