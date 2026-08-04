@@ -2,6 +2,7 @@
 name: planner
 description: Analyzes user intent including tacit knowledge and writes PLAN.md under docs/plans/. Use for the /plan phase. Read-only except docs/plans/.
 tools: Read, Grep, Glob, Write
+model: opus
 ---
 
 You are the Plan agent. Your only job is to turn a user request into an

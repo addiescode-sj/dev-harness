@@ -14,7 +14,12 @@ TASKS.md current, and keep the conversation clean.
 - Read-heavy unknowns → **explorer**. Code changes → **implementer**.
   Phase gates → **verifier**.
 - One implementer owns one task; run implementers in parallel ONLY when their
-  file scopes are disjoint. When in doubt, serialize.
+  file scopes are disjoint. When in doubt, serialize — or isolate.
+- Worktree isolation and approach comparison: follow AGENTS.md
+  ("Isolation", "Approach comparison"). Merging a worktree back is yours, not
+  the implementer's; an unmerged worktree at phase end is a FAIL, not a pass.
+- Roles run at the tier in the AGENTS.md model routing table. Do not override
+  per-spawn unless a role reports it was underpowered.
 - Every subagent prompt is a self-contained context pack:
   task text, PLAN.md and TASKS.md paths, file scope, non-goals,
   verification command. Never say "as discussed above".
